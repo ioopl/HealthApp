@@ -10,15 +10,22 @@ import UIKit
 
 class MasterViewController: UITableViewController {
 
+    let url: URL = URL.init(string: "http://www.iplato.net/test/ios-test.php")! 
     var detailViewController: DetailViewController? = nil
     var objects = [Any]()
+    var messageResponse = MessageResponse.self
+    
+    //A string array to save all the names
+    var nameArray = [String]()
+
 
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         navigationItem.leftBarButtonItem = editButtonItem
-
+        getJsonFromUrl(url: url)
+        
         let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(insertNewObject(_:)))
         navigationItem.rightBarButtonItem = addButton
         if let split = splitViewController {
@@ -39,7 +46,7 @@ class MasterViewController: UITableViewController {
 
     @objc
     func insertNewObject(_ sender: Any) {
-        objects.insert(NSDate(), at: 0)
+        objects.insert("Umair", at: 0)
         let indexPath = IndexPath(row: 0, section: 0)
         tableView.insertRows(at: [indexPath], with: .automatic)
     }
@@ -49,7 +56,7 @@ class MasterViewController: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showDetail" {
             if let indexPath = tableView.indexPathForSelectedRow {
-                let object = objects[indexPath.row] as! NSDate
+                let object = objects[indexPath.row] as! String
                 let controller = (segue.destination as! UINavigationController).topViewController as! DetailViewController
                 controller.detailItem = object
                 controller.navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem
@@ -71,7 +78,7 @@ class MasterViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
 
-        let object = objects[indexPath.row] as! NSDate
+        let object = objects[indexPath.row] as! String
         cell.textLabel!.text = object.description
         return cell
     }
@@ -90,6 +97,47 @@ class MasterViewController: UITableViewController {
         }
     }
 
-
+// API Call
+    
+    //this function is fetching the json from URL
+    func getJsonFromUrl(url: URL){
+        //creating a NSURL
+        
+        //fetching the data from the url
+        URLSession.shared.dataTask(with: (url), completionHandler: {(data, response, error) -> Void in
+            
+            if let jsonObj = try? JSONSerialization.jsonObject(with: data!, options: .allowFragments) as? NSDictionary {
+                // [ Dictionary
+                // { Array 
+                // printing the json in console
+                print(jsonObj!.value(forKey: "messages")!)
+                
+                //getting the messages tag array from json and converting it to NSArray
+                if let messagesArray = jsonObj!.value(forKey: "messages") as? NSArray {
+                    //looping through all the elements
+                    for message in messagesArray{
+                        //converting the element to a dictionary
+                        if let messageDict = message as? NSDictionary {
+                            //getting the name from the dictionary
+                            if let name = messageDict.value(forKey: "sender_name") {
+                                //adding the name to the array
+                                self.objects.append((name as? String)!)
+                                print(self.objects)
+                                
+                            }
+                        }
+                    }
+                }
+                //getting the messages tag array from json and converting it to NSArray
+                
+                // Back to main Queue
+                OperationQueue.main.addOperation({
+                    //calling another function after fetching the json
+                    //it will show the names to label
+                    self.tableView.reloadData()
+                })
+            }
+        }).resume()
+    }
 }
 
