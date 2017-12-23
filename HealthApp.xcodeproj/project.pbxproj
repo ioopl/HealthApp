@@ -99,6 +99,7 @@
 		BC90F1E31FEE8A1400F51906 /* HealthApp */ = {
 			isa = PBXGroup;
 			children = (
+				BC90F2141FEE8F2400F51906 /* Code */,
 				BC90F1E41FEE8A1400F51906 /* AppDelegate.swift */,
 				BC90F1E61FEE8A1400F51906 /* MasterViewController.swift */,
 				BC90F1E81FEE8A1400F51906 /* DetailViewController.swift */,
@@ -126,6 +127,13 @@
 				BC90F2081FEE8A1500F51906 /* Info.plist */,
 			);
 			path = HealthAppUITests;
+			sourceTree = "<group>";
+		};
+		BC90F2141FEE8F2400F51906 /* Code */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Code;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
