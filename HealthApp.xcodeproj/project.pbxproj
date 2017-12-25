@@ -15,6 +15,8 @@
 		BC90F1F11FEE8A1400F51906 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BC90F1EF1FEE8A1400F51906 /* LaunchScreen.storyboard */; };
 		BC90F1FC1FEE8A1500F51906 /* HealthAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC90F1FB1FEE8A1500F51906 /* HealthAppTests.swift */; };
 		BC90F2071FEE8A1500F51906 /* HealthAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC90F2061FEE8A1500F51906 /* HealthAppUITests.swift */; };
+		BC90F2171FEE9EEC00F51906 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC90F2161FEE9EEC00F51906 /* API.swift */; };
+		BC90F21A1FEEE5CE00F51906 /* MessageResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC90F2191FEEE5CE00F51906 /* MessageResponse.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +51,8 @@
 		BC90F2021FEE8A1500F51906 /* HealthAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HealthAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC90F2061FEE8A1500F51906 /* HealthAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthAppUITests.swift; sourceTree = "<group>"; };
 		BC90F2081FEE8A1500F51906 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BC90F2161FEE9EEC00F51906 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
+		BC90F2191FEEE5CE00F51906 /* MessageResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageResponse.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +103,7 @@
 		BC90F1E31FEE8A1400F51906 /* HealthApp */ = {
 			isa = PBXGroup;
 			children = (
+				BC90F2181FEEE52700F51906 /* Model */,
 				BC90F2141FEE8F2400F51906 /* Code */,
 				BC90F1E41FEE8A1400F51906 /* AppDelegate.swift */,
 				BC90F1E61FEE8A1400F51906 /* MasterViewController.swift */,
@@ -132,8 +137,25 @@
 		BC90F2141FEE8F2400F51906 /* Code */ = {
 			isa = PBXGroup;
 			children = (
+				BC90F2151FEE9ED300F51906 /* Helpers */,
 			);
 			path = Code;
+			sourceTree = "<group>";
+		};
+		BC90F2151FEE9ED300F51906 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				BC90F2161FEE9EEC00F51906 /* API.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		BC90F2181FEEE52700F51906 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				BC90F2191FEEE5CE00F51906 /* MessageResponse.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -270,8 +292,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BC90F21A1FEEE5CE00F51906 /* MessageResponse.swift in Sources */,
 				BC90F1E91FEE8A1400F51906 /* DetailViewController.swift in Sources */,
 				BC90F1E71FEE8A1400F51906 /* MasterViewController.swift in Sources */,
+				BC90F2171FEE9EEC00F51906 /* API.swift in Sources */,
 				BC90F1E51FEE8A1400F51906 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
