@@ -93,15 +93,18 @@ class MasterViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "MessageCell", for: indexPath)
         let tableSection = tableSections[indexPath.section]
         if tableSection == .Messages {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "MessageCell", for: indexPath)
             let object = messageResponse[indexPath.row].sender_name
             cell.textLabel!.text = object.description
             return cell
         } else {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "AppointmentCell", for: indexPath) as! AppointmentsTableViewCell
+
             let object = appointmentResponse[indexPath.row].doctor_name
-            cell.textLabel!.text = object.description
+            cell.labelName.text = object.description
+            cell.labelDate.text = appointmentResponse[indexPath.row].start_at
             return cell
         }
     }
