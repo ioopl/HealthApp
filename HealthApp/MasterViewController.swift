@@ -91,13 +91,19 @@ class MasterViewController: UITableViewController {
             return appointmentResponse.count
         }
     }
-
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MessageCell", for: indexPath)
-
-        let object = messageResponse[indexPath.row].sender_name
-        cell.textLabel!.text = object.description
-        return cell
+        let tableSection = tableSections[indexPath.section]
+        if tableSection == .Messages {
+            let object = messageResponse[indexPath.row].sender_name
+            cell.textLabel!.text = object.description
+            return cell
+        } else {
+            let object = appointmentResponse[indexPath.row].doctor_name
+            cell.textLabel!.text = object.description
+            return cell
+        }
     }
 
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
@@ -130,35 +136,23 @@ class MasterViewController: UITableViewController {
         URLSession.shared.dataTask(with: (url), completionHandler: {(data, response, error) -> Void in
             
             if let jsonObj = try? JSONSerialization.jsonObject(with: data!, options: .allowFragments) as? NSDictionary {
-                // [ Dictionary
-                // { Array 
-                // printing the json in console
-                print(jsonObj!.value(forKey: "messages")!)
-                
+                // [ Dictionary --- { Array
                 // getting the messages tag array from json and converting it to NSArray
                 if let messagesArray = jsonObj!.value(forKey: "messages") as? [[String: Any]] {
                     // looping through all the elements
                     for message in messagesArray {
-                        
                         let response = MessageResponse(dictionary: [message])
                         self.messageResponse.append(response)
-                        
-                        /*
-                        // converting the element to a dictionary
-                        if let messageDict = message as? NSDictionary {
-                            // getting the name from the dictionary
-                            if let name = messageDict.value(forKey: "sender_name") {
-                                // adding the name to the array
-                                self.objects.append((name as? String)!)
-                            }
-                        }
-                        */
-                        
-                        
                     }
                 }
-                //getting the messages tag array from json and converting it to NSArray
-                
+                //getting the appointments tag array from json and converting it to NSArray
+                if let messagesArray = jsonObj!.value(forKey: "appointments") as? [[String: Any]] {
+                    // looping through all the elements
+                    for message in messagesArray {
+                        let response = AppointmentResponse(dictionary: [message])
+                        self.appointmentResponse.append(response)
+                    }
+                }
                 // Back to main Queue
                 OperationQueue.main.addOperation({
                     //calling another function after fetching the json
