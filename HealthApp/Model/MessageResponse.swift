@@ -22,3 +22,18 @@ struct MessageResponse {
         }
     }
 }
+
+struct AppointmentResponse {
+    // MARK: Variables
+    var id = String()
+    var sender_name = String()
+    var body = String()
+    
+    init(dictionary : [[String:Any]]) {
+        for result in dictionary {
+            id = result["id"] as! String
+            sender_name = result["sender_name"] as! String
+            body = result["body"] as! String
+        }
+    }
+}
