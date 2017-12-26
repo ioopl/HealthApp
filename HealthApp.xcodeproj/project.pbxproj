@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		BC8FB4111FF29F0200A5F76F /* AppointmentsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC8FB4101FF29F0200A5F76F /* AppointmentsTableViewCell.swift */; };
+		BC8FB4131FF2A19E00A5F76F /* MessagesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC8FB4121FF2A19E00A5F76F /* MessagesTableViewCell.swift */; };
 		BC90F1E51FEE8A1400F51906 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC90F1E41FEE8A1400F51906 /* AppDelegate.swift */; };
 		BC90F1E71FEE8A1400F51906 /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC90F1E61FEE8A1400F51906 /* MasterViewController.swift */; };
 		BC90F1E91FEE8A1400F51906 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC90F1E81FEE8A1400F51906 /* DetailViewController.swift */; };
@@ -39,6 +40,7 @@
 
 /* Begin PBXFileReference section */
 		BC8FB4101FF29F0200A5F76F /* AppointmentsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppointmentsTableViewCell.swift; sourceTree = "<group>"; };
+		BC8FB4121FF2A19E00A5F76F /* MessagesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesTableViewCell.swift; sourceTree = "<group>"; };
 		BC90F1E11FEE8A1400F51906 /* HealthApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HealthApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC90F1E41FEE8A1400F51906 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BC90F1E61FEE8A1400F51906 /* MasterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterViewController.swift; sourceTree = "<group>"; };
@@ -94,6 +96,7 @@
 		BC8FB40E1FF29E7E00A5F76F /* Messages */ = {
 			isa = PBXGroup;
 			children = (
+				BC8FB4121FF2A19E00A5F76F /* MessagesTableViewCell.swift */,
 			);
 			path = Messages;
 			sourceTree = "<group>";
@@ -324,6 +327,7 @@
 				BC90F1E71FEE8A1400F51906 /* MasterViewController.swift in Sources */,
 				BC90F2171FEE9EEC00F51906 /* API.swift in Sources */,
 				BC90F1E51FEE8A1400F51906 /* AppDelegate.swift in Sources */,
+				BC8FB4131FF2A19E00A5F76F /* MessagesTableViewCell.swift in Sources */,
 				BC8FB4111FF29F0200A5F76F /* AppointmentsTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
