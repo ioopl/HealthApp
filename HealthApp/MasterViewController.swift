@@ -8,41 +8,33 @@
 
 import UIKit
 
-class MasterViewController: UITableViewController {
-
-    let url: URL = URL.init(string: "http://www.iplato.net/test/ios-test.php")!
-
+class MasterViewController: UITableViewController, MessagesTableViewCellDelegate {
+    
+    // MARK: - MessagesTableViewCellDelegate Method
+    func messagesTableViewCellDeleteDidTapped(_ messageTableViewCell: MessagesTableViewCell) {
+        guard let indexPath = messageTableViewCell.indexPathForCell else { return }
+        deleteButtonDidPress(indexPath: indexPath)
+    }
+    
     // MARK: - Vaiables
     var detailViewController: DetailViewController? = nil
     var messageResponse = [MessageResponse]()
     var appointmentResponse = [AppointmentResponse]()
-
+    let url: URL = URL.init(string: "http://www.iplato.net/test/ios-test.php")!
     
-    //A string array to save all the names
-    var nameArray = [String]()
-
     // MARK: - Enums/Data Structures
     enum TableSection: String {
         case Messages
         case Appointments
     }
     
-    // MARK : Properties
+    // MARK: - Properties
     var tableSections: [TableSection] = [.Messages, .Appointments]
 
-
+    // MARK: - View Controller Life Cycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-        navigationItem.leftBarButtonItem = editButtonItem
         getJsonFromUrl(url: url)
-        
-        let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(insertNewObject(_:)))
-        navigationItem.rightBarButtonItem = addButton
-        if let split = splitViewController {
-            let controllers = split.viewControllers
-            detailViewController = (controllers[controllers.count-1] as! UINavigationController).topViewController as? DetailViewController
-        }
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -53,13 +45,6 @@ class MasterViewController: UITableViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
-    }
-
-    @objc
-    func insertNewObject(_ sender: Any) {
-        //objects.insert("Umair", at: 0)
-        let indexPath = IndexPath(row: 0, section: 0)
-        tableView.insertRows(at: [indexPath], with: .automatic)
     }
 
     // MARK: - Segues
@@ -83,7 +68,6 @@ class MasterViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return messageResponse.count
         let displayTableSection = tableSections[section]
         if displayTableSection == .Messages {
             return messageResponse.count
@@ -99,29 +83,27 @@ class MasterViewController: UITableViewController {
             let object = messageResponse[indexPath.row].sender_name
             cell.labelName.text = object.description
             cell.labelMessage.text = messageResponse[indexPath.row].body
+            cell.delegate = self
+            cell.indexPathForCell = indexPath
             return cell
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "AppointmentCell", for: indexPath) as! AppointmentsTableViewCell
-
             let object = appointmentResponse[indexPath.row].doctor_name
             cell.labelName.text = object.description
             cell.labelDate.text = appointmentResponse[indexPath.row].start_at
             return cell
         }
     }
+    
+
+    private func deleteButtonDidPress(indexPath: IndexPath) {
+        messageResponse.remove(at: indexPath.row)
+        tableView.reloadData()
+    }
 
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         // Return false if you do not want the specified item to be editable.
         return true
-    }
-
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            messageResponse.remove(at: indexPath.row)
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
-        }
     }
     
     // Display Title for individual sections.
@@ -130,6 +112,10 @@ class MasterViewController: UITableViewController {
         return tableSection.rawValue
     }
 
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+    }
+    
 // API Call
     
     //this function is fetching the json from URL

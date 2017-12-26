@@ -105,9 +105,12 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pEj-z2-R4N">
-                                            <rect key="frame" x="313" y="6" width="46" height="30"/>
+                                            <rect key="frame" x="301" y="6" width="58" height="30"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <state key="normal" title="Delete"/>
+                                            <state key="normal" title="Remove"/>
+                                            <connections>
+                                                <action selector="deleteButtonDidTapAction:" destination="WCw-Qf-5nD" eventType="touchUpInside" id="kBL-rI-nch"/>
+                                            </connections>
                                         </button>
                                     </subviews>
                                 </tableViewCellContentView>
