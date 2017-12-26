@@ -10,13 +10,25 @@ import UIKit
 
 class MasterViewController: UITableViewController {
 
-    let url: URL = URL.init(string: "http://www.iplato.net/test/ios-test.php")! 
+    let url: URL = URL.init(string: "http://www.iplato.net/test/ios-test.php")!
+
+    // MARK: - Vaiables
     var detailViewController: DetailViewController? = nil
     var messageResponse = [MessageResponse]()
+    var appointmentResponse = [AppointmentResponse]()
+
     
     //A string array to save all the names
     var nameArray = [String]()
 
+    // MARK: - Enums/Data Structures
+    enum TableSection: String {
+        case Messages
+        case Appointments
+    }
+    
+    // MARK : Properties
+    var tableSections: [TableSection] = [.Messages, .Appointments]
 
 
     override func viewDidLoad() {
@@ -64,18 +76,24 @@ class MasterViewController: UITableViewController {
         }
     }
 
-    // MARK: - Table View
+    // MARK: - Table View Delegate
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        return tableSections.count
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return messageResponse.count
+        let displayTableSection = tableSections[section]
+        if displayTableSection == .Messages {
+            return messageResponse.count
+        } else {
+            return appointmentResponse.count
+        }
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "MessageCell", for: indexPath)
 
         let object = messageResponse[indexPath.row].sender_name
         cell.textLabel!.text = object.description
