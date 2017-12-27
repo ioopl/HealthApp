@@ -48,20 +48,6 @@ class MasterViewController: UITableViewController, MessagesTableViewCellDelegate
         // Dispose of any resources that can be recreated.
     }
 
-    // MARK: - Segues
-
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "showDetail" {
-            if let indexPath = tableView.indexPathForSelectedRow {
-                let object = messageResponse[indexPath.row] as! String
-                let controller = (segue.destination as! UINavigationController).topViewController as! DetailViewController
-                controller.detailItem = object
-                controller.navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem
-                controller.navigationItem.leftItemsSupplementBackButton = true
-            }
-        }
-    }
-
     // MARK: - Table View Delegate
 
     override func numberOfSections(in tableView: UITableView) -> Int {
