@@ -128,14 +128,13 @@ class MasterViewController: UITableViewController, MessagesTableViewCellDelegate
     
     //this function is fetching the json from URL
     func getJsonFromUrl(url: URL){
-        //creating a NSURL
         
         //fetching the data from the url
         URLSession.shared.dataTask(with: (url), completionHandler: {(data, response, error) -> Void in
             
+             // [ Dictionary --- { Array
             if let jsonObj = try? JSONSerialization.jsonObject(with: data!, options: .allowFragments) as? NSDictionary {
-                // [ Dictionary --- { Array
-                // getting the messages tag array from json and converting it to NSArray
+                // getting the "messages" tag array from json and converting it to NSArray
                 if let messagesArray = jsonObj!.value(forKey: "messages") as? [[String: Any]] {
                     // looping through all the elements
                     for message in messagesArray {
@@ -145,15 +144,16 @@ class MasterViewController: UITableViewController, MessagesTableViewCellDelegate
                         self.messageResponse.sort(by: {$0.sender_name < $1.sender_name})
                     }
                 }
-                //getting the appointments tag array from json and converting it to NSArray
-                if let messagesArray = jsonObj!.value(forKey: "appointments") as? [[String: Any]] {
-                    // looping through all the elements
-                    for message in messagesArray {
-                        let response = AppointmentResponse(dictionary: [message])
+                //getting the "appointments" tag array from json and converting it to NSArray
+                if let appointmentsArray = jsonObj!.value(forKey: "appointments") as? [[String: Any]] {
+                    for appointment in appointmentsArray {
+                        let response = AppointmentResponse(dictionary: [appointment])
                         self.appointmentResponse.append(response)
+                        // Sort array of appointment object by property value "start_at"
+                        self.appointmentResponse.sort(by: { $0.start_at < $1.start_at })
                     }
                 }
-                // Back to main Queue
+                // Back to main queue for UI
                 OperationQueue.main.addOperation({
                     //calling function after fetching the json
                     self.tableView.reloadData()
