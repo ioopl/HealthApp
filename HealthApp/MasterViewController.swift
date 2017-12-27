@@ -118,7 +118,7 @@ class MasterViewController: UITableViewController, MessagesTableViewCellDelegate
         }
     }
     
-    // Delete item from the messages object @ indexPath 
+    // Delete item from the messages object @ indexPath
     private func deleteButtonDidPress(indexPath: IndexPath) {
         messageResponse.remove(at: indexPath.row)
         tableView.reloadData()
@@ -141,6 +141,8 @@ class MasterViewController: UITableViewController, MessagesTableViewCellDelegate
                     for message in messagesArray {
                         let response = MessageResponse(dictionary: [message])
                         self.messageResponse.append(response)
+                        // Sort array of message object by property value "sender_name"
+                        self.messageResponse.sort(by: {$0.sender_name < $1.sender_name})
                     }
                 }
                 //getting the appointments tag array from json and converting it to NSArray
