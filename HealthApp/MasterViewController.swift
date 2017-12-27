@@ -86,6 +86,8 @@ class MasterViewController: UITableViewController, MessagesTableViewCellDelegate
             cell.labelMessage.text = messageResponse[indexPath.row].body
             cell.delegate = self
             cell.indexPathForCell = indexPath
+            // Make uitableviewcell not selectable
+            cell.selectionStyle = UITableViewCellSelectionStyle.none
             return cell
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "AppointmentCell", for: indexPath) as! AppointmentsTableViewCell
@@ -105,10 +107,6 @@ class MasterViewController: UITableViewController, MessagesTableViewCellDelegate
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         let tableSection = tableSections[section]
         return tableSection.rawValue
-    }
-
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
     }
     
     //Centrally align table view sections
