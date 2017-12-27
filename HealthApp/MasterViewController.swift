@@ -96,12 +96,6 @@ class MasterViewController: UITableViewController, MessagesTableViewCellDelegate
         }
     }
     
-
-    private func deleteButtonDidPress(indexPath: IndexPath) {
-        messageResponse.remove(at: indexPath.row)
-        tableView.reloadData()
-    }
-
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         // Return false if you do not want the specified item to be editable.
         return true
@@ -117,7 +111,20 @@ class MasterViewController: UITableViewController, MessagesTableViewCellDelegate
         
     }
     
-// API Call
+    //Centrally align table view sections
+    override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        if let headerView = view as? UITableViewHeaderFooterView {
+            headerView.textLabel?.textAlignment = .center
+        }
+    }
+    
+    // Delete item from the messages object @ indexPath 
+    private func deleteButtonDidPress(indexPath: IndexPath) {
+        messageResponse.remove(at: indexPath.row)
+        tableView.reloadData()
+    }
+    
+    // MARK: -  API Call
     
     //this function is fetching the json from URL
     func getJsonFromUrl(url: URL){
