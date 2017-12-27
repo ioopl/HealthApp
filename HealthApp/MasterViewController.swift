@@ -17,7 +17,6 @@ class MasterViewController: UITableViewController, MessagesTableViewCellDelegate
     }
     
     // MARK: - Vaiables
-    var detailViewController: DetailViewController? = nil
     var messageResponse = [MessageResponse]()
     var appointmentResponse = [AppointmentResponse]()
     let url: URL = URL.init(string: "http://www.iplato.net/test/ios-test.php")!
