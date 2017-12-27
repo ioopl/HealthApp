@@ -24,8 +24,8 @@ class MasterViewController: UITableViewController, MessagesTableViewCellDelegate
     
     // MARK: - Enums/Data Structures
     enum TableSection: String {
-        case Messages
-        case Appointments
+        case Messages = "Message Inbox"
+        case Appointments = "My Appointments"
     }
     
     // MARK: - Properties
@@ -34,6 +34,7 @@ class MasterViewController: UITableViewController, MessagesTableViewCellDelegate
     // MARK: - View Controller Life Cycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
+        UIApplication.shared.isNetworkActivityIndicatorVisible = true
         getJsonFromUrl(url: url)
     }
 
@@ -145,9 +146,9 @@ class MasterViewController: UITableViewController, MessagesTableViewCellDelegate
                 }
                 // Back to main Queue
                 OperationQueue.main.addOperation({
-                    //calling another function after fetching the json
-                    //it will show the names to label
+                    //calling function after fetching the json
                     self.tableView.reloadData()
+                    UIApplication.shared.isNetworkActivityIndicatorVisible = false
                 })
             }
         }).resume()
