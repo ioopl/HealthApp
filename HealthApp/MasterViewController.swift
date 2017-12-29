@@ -88,17 +88,31 @@ class MasterViewController: UITableViewController, MessagesTableViewCellDelegate
         return true
     }
     
-    // Display Title for individual sections.
-    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        let tableSection = tableSections[section]
-        return tableSection.rawValue
-    }
-    
     //Centrally align table view sections
     override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
         if let headerView = view as? UITableViewHeaderFooterView {
             headerView.textLabel?.textAlignment = .center
         }
+    }
+    
+    // Display Title for individual sections, remove header title if no data in rows. 
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+
+        let tableSection = tableSections[section]
+
+        switch section {
+        case 0:
+            if self.tableView(tableView, numberOfRowsInSection: section) > 0 {
+                return tableSection.rawValue
+            }
+        case 1:
+            if self.tableView(tableView, numberOfRowsInSection: section) > 0 {
+                return tableSection.rawValue
+            }
+        default:
+            return nil
+        }
+        return nil
     }
     
     // Delete item from the messages object @ indexPath
