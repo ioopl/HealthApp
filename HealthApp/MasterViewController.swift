@@ -115,6 +115,20 @@ class MasterViewController: UITableViewController, MessagesTableViewCellDelegate
         return nil
     }
     
+    // Get specific row for a specific table view section when selected.
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        switch indexPath.section {
+        case 1:
+            let doctor_name = appointmentResponse[indexPath.row].doctor_name
+            let alertController = UIAlertController(title: nil, message: doctor_name, preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "Ok", style: .default) 
+            alertController.addAction(okAction)
+            present(alertController, animated: true)
+        default:
+            return
+        }
+    }
+    
     // Delete item from the messages object @ indexPath
     private func deleteButtonDidPress(indexPath: IndexPath) {
         messageResponse.remove(at: indexPath.row)
