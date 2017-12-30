@@ -78,7 +78,18 @@ class MasterViewController: UITableViewController, MessagesTableViewCellDelegate
             let cell = tableView.dequeueReusableCell(withIdentifier: "AppointmentCell", for: indexPath) as! AppointmentsTableViewCell
             let object = appointmentResponse[indexPath.row].doctor_name
             cell.labelName.text = object.description
-            cell.labelDate.text = appointmentResponse[indexPath.row].start_at
+            
+            // create dateFormatter with UTC time format
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
+            dateFormatter.timeZone = NSTimeZone(name: "UTC")! as TimeZone
+            guard let date = dateFormatter.date(from: appointmentResponse[indexPath.row].start_at) else { return cell }// create   date from string
+            
+            // change to a readable time format and change to local time zone
+            dateFormatter.dateFormat = "EEE, MMM d, yyyy h:mm a"
+            dateFormatter.timeZone = NSTimeZone.local
+            let timeStamp = dateFormatter.string(from: date)
+            cell.labelDate.text = timeStamp
             return cell
         }
     }
