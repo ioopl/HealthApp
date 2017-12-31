@@ -101,10 +101,13 @@ class MasterViewController: UITableViewController, MessagesTableViewCellDelegate
     
     //Centrally align table view sections
     override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        view.tintColor = UIColor(red: 33, green: 133, blue: 33)
         if let headerView = view as? UITableViewHeaderFooterView {
+            headerView.textLabel?.textColor = UIColor.white
             headerView.textLabel?.textAlignment = .center
         }
     }
+    
     
     // Display Title for individual sections, remove header title if no data in rows. 
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
@@ -183,6 +186,16 @@ class MasterViewController: UITableViewController, MessagesTableViewCellDelegate
                 })
             }
         }).resume()
+    }
+}
+
+// MARK: - Extensions
+extension UIColor {
+    convenience init(red: Int, green: Int, blue: Int) {
+        let newRed = CGFloat(red)/255
+        let newGreen = CGFloat(green)/255
+        let newBlue = CGFloat(blue)/255
+        self.init(red: newRed, green: newGreen, blue: newBlue, alpha: 1.0)
     }
 }
 
