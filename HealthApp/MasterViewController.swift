@@ -19,7 +19,7 @@ class MasterViewController: UITableViewController, MessagesTableViewCellDelegate
     // MARK: - Vaiables
     var messageResponse = [MessageResponse]()
     var appointmentResponse = [AppointmentResponse]()
-    let url: URL = URL.init(string: "http://www.iplato.net/test/ios-test.php")!
+    let url: URL = URL.init(string: Constant.APIURL)!
     
     // MARK: - Enums/Data Structures
     enum TableSection: String {

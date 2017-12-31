@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BC22DC271FF98B1A0068CF07 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC22DC261FF98B1A0068CF07 /* Constant.swift */; };
 		BC8FB4111FF29F0200A5F76F /* AppointmentsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC8FB4101FF29F0200A5F76F /* AppointmentsTableViewCell.swift */; };
 		BC8FB4131FF2A19E00A5F76F /* MessagesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC8FB4121FF2A19E00A5F76F /* MessagesTableViewCell.swift */; };
 		BC90F1E51FEE8A1400F51906 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC90F1E41FEE8A1400F51906 /* AppDelegate.swift */; };
@@ -38,6 +39,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		BC22DC261FF98B1A0068CF07 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		BC8FB4101FF29F0200A5F76F /* AppointmentsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppointmentsTableViewCell.swift; sourceTree = "<group>"; };
 		BC8FB4121FF2A19E00A5F76F /* MessagesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesTableViewCell.swift; sourceTree = "<group>"; };
 		BC90F1E11FEE8A1400F51906 /* HealthApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HealthApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -82,6 +84,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		BC22DC251FF98AFD0068CF07 /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				BC22DC261FF98B1A0068CF07 /* Constant.swift */,
+			);
+			path = Constants;
+			sourceTree = "<group>";
+		};
 		BC8FB40D1FF29E5D00A5F76F /* TableViewCells */ = {
 			isa = PBXGroup;
 			children = (
@@ -172,6 +182,7 @@
 		BC90F2151FEE9ED300F51906 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				BC22DC251FF98AFD0068CF07 /* Constants */,
 				BC90F2161FEE9EEC00F51906 /* API.swift */,
 			);
 			path = Helpers;
@@ -319,6 +330,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BC22DC271FF98B1A0068CF07 /* Constant.swift in Sources */,
 				BC90F21A1FEEE5CE00F51906 /* MessageResponse.swift in Sources */,
 				BC90F1E71FEE8A1400F51906 /* MasterViewController.swift in Sources */,
 				BC90F2171FEE9EEC00F51906 /* API.swift in Sources */,
