@@ -42,11 +42,6 @@ class MasterViewController: UITableViewController, MessagesTableViewCellDelegate
         super.viewWillAppear(animated)
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
     // MARK: - Table View Delegate
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -107,7 +102,6 @@ class MasterViewController: UITableViewController, MessagesTableViewCellDelegate
             headerView.textLabel?.textAlignment = .center
         }
     }
-    
     
     // Display Title for individual sections, remove header title if no data in rows. 
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
