@@ -7,14 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BC22DC271FF98B1A0068CF07 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC22DC261FF98B1A0068CF07 /* Constant.swift */; };
+		BC8FB4111FF29F0200A5F76F /* AppointmentsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC8FB4101FF29F0200A5F76F /* AppointmentsTableViewCell.swift */; };
+		BC8FB4131FF2A19E00A5F76F /* MessagesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC8FB4121FF2A19E00A5F76F /* MessagesTableViewCell.swift */; };
 		BC90F1E51FEE8A1400F51906 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC90F1E41FEE8A1400F51906 /* AppDelegate.swift */; };
 		BC90F1E71FEE8A1400F51906 /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC90F1E61FEE8A1400F51906 /* MasterViewController.swift */; };
-		BC90F1E91FEE8A1400F51906 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC90F1E81FEE8A1400F51906 /* DetailViewController.swift */; };
 		BC90F1EC1FEE8A1400F51906 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BC90F1EA1FEE8A1400F51906 /* Main.storyboard */; };
 		BC90F1EE1FEE8A1400F51906 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BC90F1ED1FEE8A1400F51906 /* Assets.xcassets */; };
 		BC90F1F11FEE8A1400F51906 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BC90F1EF1FEE8A1400F51906 /* LaunchScreen.storyboard */; };
 		BC90F1FC1FEE8A1500F51906 /* HealthAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC90F1FB1FEE8A1500F51906 /* HealthAppTests.swift */; };
 		BC90F2071FEE8A1500F51906 /* HealthAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC90F2061FEE8A1500F51906 /* HealthAppUITests.swift */; };
+		BC90F2171FEE9EEC00F51906 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC90F2161FEE9EEC00F51906 /* API.swift */; };
+		BC90F21A1FEEE5CE00F51906 /* MessageResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC90F2191FEEE5CE00F51906 /* MessageResponse.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,10 +39,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		BC22DC261FF98B1A0068CF07 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
+		BC8FB4101FF29F0200A5F76F /* AppointmentsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppointmentsTableViewCell.swift; sourceTree = "<group>"; };
+		BC8FB4121FF2A19E00A5F76F /* MessagesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesTableViewCell.swift; sourceTree = "<group>"; };
 		BC90F1E11FEE8A1400F51906 /* HealthApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HealthApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC90F1E41FEE8A1400F51906 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BC90F1E61FEE8A1400F51906 /* MasterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterViewController.swift; sourceTree = "<group>"; };
-		BC90F1E81FEE8A1400F51906 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		BC90F1EB1FEE8A1400F51906 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		BC90F1ED1FEE8A1400F51906 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BC90F1F01FEE8A1400F51906 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -49,6 +55,8 @@
 		BC90F2021FEE8A1500F51906 /* HealthAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HealthAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC90F2061FEE8A1500F51906 /* HealthAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthAppUITests.swift; sourceTree = "<group>"; };
 		BC90F2081FEE8A1500F51906 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BC90F2161FEE9EEC00F51906 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
+		BC90F2191FEEE5CE00F51906 /* MessageResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageResponse.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,6 +84,39 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		BC22DC251FF98AFD0068CF07 /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				BC22DC261FF98B1A0068CF07 /* Constant.swift */,
+			);
+			path = Constants;
+			sourceTree = "<group>";
+		};
+		BC8FB40D1FF29E5D00A5F76F /* TableViewCells */ = {
+			isa = PBXGroup;
+			children = (
+				BC8FB40F1FF29E8500A5F76F /* Appointments */,
+				BC8FB40E1FF29E7E00A5F76F /* Messages */,
+			);
+			path = TableViewCells;
+			sourceTree = "<group>";
+		};
+		BC8FB40E1FF29E7E00A5F76F /* Messages */ = {
+			isa = PBXGroup;
+			children = (
+				BC8FB4121FF2A19E00A5F76F /* MessagesTableViewCell.swift */,
+			);
+			path = Messages;
+			sourceTree = "<group>";
+		};
+		BC8FB40F1FF29E8500A5F76F /* Appointments */ = {
+			isa = PBXGroup;
+			children = (
+				BC8FB4101FF29F0200A5F76F /* AppointmentsTableViewCell.swift */,
+			);
+			path = Appointments;
+			sourceTree = "<group>";
+		};
 		BC90F1D81FEE8A1400F51906 = {
 			isa = PBXGroup;
 			children = (
@@ -99,9 +140,10 @@
 		BC90F1E31FEE8A1400F51906 /* HealthApp */ = {
 			isa = PBXGroup;
 			children = (
+				BC90F2181FEEE52700F51906 /* Model */,
+				BC90F2141FEE8F2400F51906 /* Code */,
 				BC90F1E41FEE8A1400F51906 /* AppDelegate.swift */,
 				BC90F1E61FEE8A1400F51906 /* MasterViewController.swift */,
-				BC90F1E81FEE8A1400F51906 /* DetailViewController.swift */,
 				BC90F1EA1FEE8A1400F51906 /* Main.storyboard */,
 				BC90F1ED1FEE8A1400F51906 /* Assets.xcassets */,
 				BC90F1EF1FEE8A1400F51906 /* LaunchScreen.storyboard */,
@@ -126,6 +168,32 @@
 				BC90F2081FEE8A1500F51906 /* Info.plist */,
 			);
 			path = HealthAppUITests;
+			sourceTree = "<group>";
+		};
+		BC90F2141FEE8F2400F51906 /* Code */ = {
+			isa = PBXGroup;
+			children = (
+				BC8FB40D1FF29E5D00A5F76F /* TableViewCells */,
+				BC90F2151FEE9ED300F51906 /* Helpers */,
+			);
+			path = Code;
+			sourceTree = "<group>";
+		};
+		BC90F2151FEE9ED300F51906 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				BC22DC251FF98AFD0068CF07 /* Constants */,
+				BC90F2161FEE9EEC00F51906 /* API.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		BC90F2181FEEE52700F51906 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				BC90F2191FEEE5CE00F51906 /* MessageResponse.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -262,9 +330,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BC90F1E91FEE8A1400F51906 /* DetailViewController.swift in Sources */,
+				BC22DC271FF98B1A0068CF07 /* Constant.swift in Sources */,
+				BC90F21A1FEEE5CE00F51906 /* MessageResponse.swift in Sources */,
 				BC90F1E71FEE8A1400F51906 /* MasterViewController.swift in Sources */,
+				BC90F2171FEE9EEC00F51906 /* API.swift in Sources */,
 				BC90F1E51FEE8A1400F51906 /* AppDelegate.swift in Sources */,
+				BC8FB4131FF2A19E00A5F76F /* MessagesTableViewCell.swift in Sources */,
+				BC8FB4111FF29F0200A5F76F /* AppointmentsTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
