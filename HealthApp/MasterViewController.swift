@@ -100,6 +100,8 @@ class MasterViewController: UITableViewController, MessagesTableViewCellDelegate
             headerView.textLabel?.textColor = UIColor.white
             headerView.textLabel?.textAlignment = .center
         }
+        // Hide all empty table view rows
+        tableView.tableFooterView = UIView(frame: .zero)
     }
     
     // Display Title for individual sections, remove header title if no data in rows. 
