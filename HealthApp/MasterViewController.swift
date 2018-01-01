@@ -19,7 +19,6 @@ class MasterViewController: UITableViewController, MessagesTableViewCellDelegate
     // MARK: - Vaiables
     var messageResponse = [MessageResponse]()
     var appointmentResponse = [AppointmentResponse]()
-    let url: URL = URL.init(string: Constant.APIURL)!
     
     // MARK: - Enums/Data Structures
     enum TableSection: String {
@@ -34,7 +33,7 @@ class MasterViewController: UITableViewController, MessagesTableViewCellDelegate
     override func viewDidLoad() {
         super.viewDidLoad()
         UIApplication.shared.isNetworkActivityIndicatorVisible = true
-        getJsonFromUrl(url: url)
+        getData()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -144,42 +143,39 @@ class MasterViewController: UITableViewController, MessagesTableViewCellDelegate
     }
     
     // MARK: -  API Call
-    
-    //this function is fetching the json from URL
-    func getJsonFromUrl(url: URL){
-        
-        //fetching the data from the url
-        URLSession.shared.dataTask(with: (url), completionHandler: {(data, response, error) -> Void in
-            
-             // [ Dictionary --- { Array
-            if let jsonObj = try? JSONSerialization.jsonObject(with: data!, options: .allowFragments) as? NSDictionary {
-                // getting the "messages" tag array from json and converting it to NSArray
-                if let messagesArray = jsonObj!.value(forKey: "messages") as? [[String: Any]] {
-                    // looping through all the elements
-                    for message in messagesArray {
-                        let response = MessageResponse(dictionary: [message])
-                        self.messageResponse.append(response)
-                        // Sort array of message object by property value "sender_name"
-                        self.messageResponse.sort(by: {$0.sender_name < $1.sender_name})
-                    }
+    /**
+     The function fetches json data from URL in background via API and then bind it to tableview in main thread.
+     */
+    func getData(){
+        API.fetchDatafromURLInBackground(urlString: Constant.APIURL) { (jsonObj, error) in
+            // [ Dictionary --- { Array
+            let jsonDictionary = jsonObj as? NSDictionary
+            // getting the "messages" tag array from json and converting it to NSArray
+            if let messagesArray = jsonDictionary!.value(forKey: "messages") as? [[String: Any]] {
+                // looping through all the elements
+                for message in messagesArray {
+                    let response = MessageResponse(dictionary: [message])
+                    self.messageResponse.append(response)
+                    // Sort array of message object by property value "sender_name"
+                    self.messageResponse.sort(by: {$0.sender_name < $1.sender_name})
                 }
-                //getting the "appointments" tag array from json and converting it to NSArray
-                if let appointmentsArray = jsonObj!.value(forKey: "appointments") as? [[String: Any]] {
-                    for appointment in appointmentsArray {
-                        let response = AppointmentResponse(dictionary: [appointment])
-                        self.appointmentResponse.append(response)
-                        // Sort array of appointment object by property value "start_at"
-                        self.appointmentResponse.sort(by: { $0.start_at < $1.start_at })
-                    }
-                }
-                // Back to main queue for UI
-                OperationQueue.main.addOperation({
-                    //calling function after fetching the json
-                    self.tableView.reloadData()
-                    UIApplication.shared.isNetworkActivityIndicatorVisible = false
-                })
             }
-        }).resume()
+            //getting the "appointments" tag array from json and converting it to NSArray
+            if let appointmentsArray = jsonDictionary!.value(forKey: "appointments") as? [[String: Any]] {
+                for appointment in appointmentsArray {
+                    let response = AppointmentResponse(dictionary: [appointment])
+                    self.appointmentResponse.append(response)
+                    // Sort array of appointment object by property value "start_at"
+                    self.appointmentResponse.sort(by: { $0.start_at < $1.start_at })
+                }
+            }
+            // Back to main queue for UI
+            OperationQueue.main.addOperation({
+                //calling function after fetching the json
+                self.tableView.reloadData()
+                UIApplication.shared.isNetworkActivityIndicatorVisible = false
+            })
+        }
     }
 }
 
